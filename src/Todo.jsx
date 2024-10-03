@@ -14,9 +14,16 @@ export const Todo = () => {
   const onChangeTodoText = (event) => setTodoText(event.target.value);
   // 追加ボタンがクリックされたときに実行される関数
   const onClickAdd = ()=> {
+    if (todoText === "") return;
     const newTodos = [...incompleteTodos, todoText]
     setIncompleteTodos(newTodos);
     setTodoText("");
+  }
+  // 削除ボタンがクリックされたときに実行される関数
+  const onClickDelete = (index)=> {
+    const newTodos = [...incompleteTodos];
+    newTodos.splice(index, 1);
+    setIncompleteTodos(newTodos)
   }
   return (
     <>
@@ -27,12 +34,12 @@ export const Todo = () => {
       <div className="incomplete-area">
         <p className="title">未完了のTodo</p>
         <ul>
-          {incompleteTodos.map((todo) => (
+          {incompleteTodos.map((todo, index) => (
             <li key={todo}>
               <div className="list-row">
                 <p>{todo}</p>
                 <button>完了</button>
-                <button>削除</button>
+                <button onClick={() => onClickDelete(index)}>削除</button>
               </div>
             </li>
           ))}
