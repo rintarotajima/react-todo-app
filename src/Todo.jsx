@@ -13,17 +13,27 @@ export const Todo = () => {
   // テキストボックスの値が変化したときに実行される関数
   const onChangeTodoText = (event) => setTodoText(event.target.value);
   // 追加ボタンがクリックされたときに実行される関数
-  const onClickAdd = ()=> {
+  const onClickAdd = () => {
     if (todoText === "") return;
-    const newTodos = [...incompleteTodos, todoText]
+    const newTodos = [...incompleteTodos, todoText];
     setIncompleteTodos(newTodos);
     setTodoText("");
   }
   // 削除ボタンがクリックされたときに実行される関数
-  const onClickDelete = (index)=> {
+  const onClickDelete = (index) => {
     const newTodos = [...incompleteTodos];
     newTodos.splice(index, 1);
     setIncompleteTodos(newTodos)
+  }
+  // 完了ボタンがクリックされたときに実行される関数
+  const onClickComplete = (index)=> {
+    // 未完了のTodoからリストを消す機能
+    const newIncompleteTodos = [...incompleteTodos];
+    newIncompleteTodos.splice(index, 1);
+    setIncompleteTodos(newIncompleteTodos);
+    // 完了のTodoにリストを移動し、表示する機能
+    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
+    setCompleteTodos(newCompleteTodos);
   }
   return (
     <>
@@ -38,7 +48,7 @@ export const Todo = () => {
             <li key={todo}>
               <div className="list-row">
                 <p>{todo}</p>
-                <button>完了</button>
+                <button onClick={() => onClickComplete(index)}>完了</button>
                 <button onClick={() => onClickDelete(index)}>削除</button>
               </div>
             </li>
