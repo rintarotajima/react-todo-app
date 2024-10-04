@@ -45,7 +45,7 @@ button:hover {
     border-radius: 5px;
 } */
 
-.complete-area {
+/* .complete-area {
     background-color: #63c57b;
     width: 500px;
     min-height: 250px;
@@ -53,7 +53,7 @@ button:hover {
     margin: 10px;
     border: 2px solid;
     border-radius: 5px;
-}
+} */
 
 .list-row {
     display: flex;
