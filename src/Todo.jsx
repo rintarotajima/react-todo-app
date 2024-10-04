@@ -6,12 +6,9 @@ import { CompleteTodos } from "./components/CompleteTodos";
 export const Todo = () => {
   const [todoText, setTodoText] = useState("");
   // 未完了のTodoリストのデータを格納する配列をuseStateで定義
-  const [incompleteTodos, setIncompleteTodos] = useState(["Todo1", "Todo2"]);
+  const [incompleteTodos, setIncompleteTodos] = useState([]);
   // 完了したTodoリストのデータを格納する配列をuseStateで定義
-  const [completeTodos, setCompleteTodos] = useState([
-    "Todo1でした",
-    "Todo2でした",
-  ]);
+  const [completeTodos, setCompleteTodos] = useState([]);
 
   // テキストボックスの値が変化したときに実行される関数
   const onChangeTodoText = (event) => setTodoText(event.target.value);
